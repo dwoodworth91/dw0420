@@ -7,10 +7,10 @@ import java.time.temporal.TemporalAdjusters;
 
 import model.DayMonthWeekdayHolidayBean;
 
-public class DayMonthWeekdayHolidayOccurrenceCounter extends BaseHolidayOccurrenceCounter<DayMonthWeekdayHolidayBean> {
+public class DayMonthWeekdayHolidayOccurrenceFinder implements IHolidayOccurrenceFinder<DayMonthWeekdayHolidayBean> {
 
 	@Override
-	protected LocalDate findOccurance(int year, DayMonthWeekdayHolidayBean holiday) {
+	public LocalDate findOccurance(int year, DayMonthWeekdayHolidayBean holiday) {
 		TemporalAdjuster nthWeekdayOfMonthAdjuster =
 				TemporalAdjusters.dayOfWeekInMonth(holiday.getOrdinal(), holiday.getWeekday());
 		return YearMonth
